@@ -8,22 +8,19 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
         <meta name="description" content="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
         <link rel="stylesheet" href="./assets/index.css">
-        <script type="module" src="scripts/index.js"></script>
+        <script type="module" src="scripts/main.js"></script>
     </head>
     <body>
         <header>
-            <a href="index.html">
-                <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
-            </a>
-            <nav>
-                <ul>
-                    <a href="#portfolio"><li>projets</li></a>
-                    <a href="#contact"><li>contact</li></a>
-                    <a href="login.html"><li>login</li></a>
-                    <li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
-                </ul>
-            </nav>
+            <!-- generateEditionBanner() -->
+            <div class="head">
+                <a href="index.html">
+                    <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+                </a>
+                <!-- generateHeaderNavigation() -->
+            </div>
         </header>
         <main>
             <section id="introduction">
@@ -38,12 +35,15 @@
                 </article>
             </section>
             <section id="portfolio">
-                <h2>Mes Projets</h2>
+                <section class="head">
+                    <h2>Mes Projets</h2>
+                    <!-- generatePortfolioButton() -->
+                </section>
                 <section class="filters">
-                    <!-- JS Code dynamically inserted here -->
+                    <!-- generateFiltersSection() & createFiltersListeners() -->
                 </section>
                 <div class="gallery">
-                    <!-- JS Code dynamically inserted here -->
+                    <!-- generateGallery() -->
                 </div>
             </section>
             <section id="contact">

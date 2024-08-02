@@ -101,6 +101,10 @@ li:hover {
 	color: #B1663C;
 }
 
+#login li {
+	font-weight: bold;
+}
+
 main {
 	text-align: center;
 	display: flex;
@@ -140,4 +144,10 @@ form input[type="submit"] {
 
 main a {
     text-decoration: underline;
+}
+
+alert {
+	font-size: 16px;
+	margin: 20px;
+	color: red;
 }

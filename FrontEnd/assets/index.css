@@ -53,12 +53,32 @@ body {
 	font-family: 'Work Sans' ;
 	font-size: 14px;
 }
-header {
+
+header .head {
 	display: flex;
 	justify-content: space-between;
 	margin: 50px 0
 }
-section {
+
+header .banner {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	font-size: 1.2em;
+	background-color: black;
+	color: white;
+	padding-block: 15px;
+}
+
+.banner span {
+	margin: 5px;
+}
+
+.material-symbols-outlined {
+	font-size: 100%;
+}
+
+main section {
 	margin: 50px 0
 }
 
@@ -75,7 +95,6 @@ h1 > span {
 	font-family: 'Work Sans';
 	font-size:10px;
 	letter-spacing: 0.1em;
-;
 }
 
 h2{
@@ -90,11 +109,16 @@ nav ul {
 	list-style-type: none;
 	cursor: pointer;
 }
-nav li, a {
+li, a {
+	font-family: 'Work Sans';
 	padding: 0 10px;
-	font-size: 1.2em;
+	font-size: 16px;
 	color: black;
 	text-decoration: none;
+}
+
+.head img {
+	width: 50%;
 }
 
 li:hover {
@@ -125,15 +149,28 @@ li:hover {
 }
 #portfolio h2 {
 	text-align: center;
-	margin-bottom: 1em;
+	margin-block: auto;
 }
 
-.filters {
+#portfolio .head {
+	display: flex;
+	text-align: center;
+	justify-content: center;
+}
+
+#portfolio .head .edition_mode {
+	margin-block: auto;
+	margin-left: 10px;
+	cursor: pointer;
+	font-size: 1.2em;
+}
+
+#portfolio .filters {
 	display: flex;
 	justify-content: center
 }
 
-button {
+#portfolio button {
 	font-family: 'Syne';
 	font-size: 20px;
 	min-width: 120px;
@@ -147,16 +184,16 @@ button {
 	margin-inline: 10px;
 }
 
-button:hover {
+#portfolio button:hover {
 	cursor: pointer;
 }
 
-button:active {
+#portfolio button:active {
 	color: white;
 	background-color: #1D6154;
 }
 
-.gallery {
+#portfolio .gallery {
 	width: 100%;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
@@ -164,7 +201,7 @@ button:active {
 	grid-row-gap: 20px;
 }
 
-.gallery img {
+#portfolio .gallery img {
 	width: 100%;
 
 }
