@@ -113,7 +113,7 @@ function is_logged_in() {
 }
 
 function generateHeaderNavigation() {
-  const header = document.querySelector(".head");
+  const header = document.querySelector(".image-and-nav")
 
   const nav = document.createElement("nav");
   const ul = document.createElement("ul");
@@ -147,8 +147,7 @@ function generateEditionBanner() {
   divBanner.className = "banner";
 
   const editIcon = document.createElement("span");
-  editIcon.className = "material-symbols-outlined";
-  editIcon.innerText = "edit_square";
+  editIcon.classList.add("fa-regular", "fa-pen-to-square");
   divBanner.appendChild(editIcon);
 
   const editText = document.createElement("span");
@@ -159,21 +158,28 @@ function generateEditionBanner() {
   header.insertBefore(divBanner, header.firstChild);
 }
 
-function generatePortfolioButton() {
+async function generatePortfolioEditButton(works, categories) {
   const head = document.querySelector("#portfolio .head");
-  const divEdition = document.createElement("div");
-  divEdition.className = "edition_mode";
+  const linkEdition = document.createElement("a");
+  linkEdition.href = "#modal";
+  linkEdition.className = "js-modal";
 
   const editIcon = document.createElement("span");
-  editIcon.className = "material-symbols-outlined";
-  editIcon.innerText = "edit_square";
-  divEdition.appendChild(editIcon);
+  editIcon.classList.add("fa-regular", "fa-pen-to-square");
+  linkEdition.appendChild(editIcon);
 
   const editText = document.createElement("span");
   editText.innerText = "modifier";
-  divEdition.appendChild(editText);
+  linkEdition.appendChild(editText);
 
-  head.appendChild(divEdition);
+  head.appendChild(linkEdition);
+
+  // Import the modal.js module and call the openModal method
+  import("./modal.js").then((module) => {
+    linkEdition.addEventListener("click", () => {
+        module.openModal(works, categories);
+    });
+  });
 }
 
 async function main() {
@@ -188,10 +194,8 @@ async function main() {
     createFiltersListeners(works, categories);
   } else {
     generateEditionBanner();
-    generatePortfolioButton();
+    generatePortfolioEditButton(works, categories);
   }
 }
 
 main();
-
-// TODO code this in JS

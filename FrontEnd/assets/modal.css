@@ -1,0 +1,201 @@
+.modal {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.modal-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 720px;
+    height: 800px;
+    max-width: calc(100vw - 20px);
+    max-height: calc(100vh - 20px);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.js-modal-div-header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+/* The close "button" */
+.fa-xmark {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.fa-arrow-left {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.fa-solid:hover {
+    cursor: pointer;
+}
+
+.js-modal-title {
+    font-family: 'Work Sans';
+    color: black;
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+.js-modal-gallery {
+    width: 75%;
+    display: grid;
+    grid-template-columns: repeat(5, 17%);
+    gap: 20px;
+    border-bottom: 3px solid lightgray;
+    padding-bottom: 80px;
+}
+
+.js-modal-photo {
+    position: relative;
+}
+
+.js-modal-photo-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.js-modal-photo-delete-btn {
+    display: flex;
+    position: absolute;
+    z-index: 1;
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    color: white;
+    text-align: right;
+    right: 0%;
+    margin: 10px;
+    border-radius: 3px;
+    /* Trick to set to the upper */
+    margin-top: -115px;
+    cursor: pointer;
+}
+
+.fa-trash-can {
+    margin: auto;
+}
+
+.modal-wrapper input[type="submit"] {
+    height: 45px;
+    width: 50%;
+    border-style: none;
+    font-size: 16px;
+}
+
+#modal-add-work {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+}
+
+#modal-add-work alert {
+    color: red;
+    font-weight: bold;
+}
+
+.modal-add-title, .modal-add-category {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: space-around;
+    width: 100%;
+    text-align: left;
+    margin-block: 5px;
+}
+
+#title, #category {
+    border: none;
+    filter: drop-shadow(3px 3px 15px rgba(0, 0, 0, 0.1));
+    font-size: 25px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background-color: white;
+}
+
+.modal-add-title label, .modal-add-category label, option {
+    font-size: 16px;
+}
+
+.modal-add-title input[type="text"], .modal-add-category select {
+    height: 65px;
+}
+
+.modal-add-inputs {
+    padding-bottom: 32px;
+    border-bottom: 2px solid lightgray;
+}
+
+.add-file-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 220px;
+    background-color: rgb(232, 241, 246);
+    margin-bottom: 40px;
+}
+
+#preview {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 60%;
+}
+
+#uploadFileButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(48, 102, 133);
+    font-weight: bolder;
+    font-size: 16px;
+    width: 60%;
+    height: 40px;
+    border-radius: 30px;
+    background-color: rgb(203, 214, 220);
+    border-style: none;
+    cursor: pointer;
+    margin-block: 10px;
+}
+
+.fa-image {
+    font-size: 80px;
+    color: rgb(185, 197, 204);
+}
+
+.add-image-requirements {
+    font-size: 14px;
+    color: rgb(68, 68, 68)
+}
+
+#add-work-submit {
+    background-color: rgb(167, 167, 167);
+    cursor: auto;
+}
+
+#preview img {
+    width: 220px;
+    height: 324px;
+    object-fit: contain;
+}

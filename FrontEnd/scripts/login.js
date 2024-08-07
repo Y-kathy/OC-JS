@@ -1,12 +1,13 @@
 const form = document.querySelector("form");
 form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
   const main = document.querySelector("main");
   let response_error_message = document.querySelector("main alert");
 
   // Delete the alert if it is present
   if (response_error_message != null) main.removeChild(response_error_message);
 
-  event.preventDefault();
   const email = document.getElementById("email");
   const password = document.getElementById("password");
   const login = {
@@ -18,7 +19,7 @@ form.addEventListener("submit", (event) => {
   fetch("http://localhost:5678/api/users/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: body,
+    body: body
   }).then((response) => {
     // Returns true if the response returned successfully
     if (response.ok) {
