@@ -237,7 +237,7 @@ function generateAddWorkForm(categories) {
   form.appendChild(submitButton);
   form.addEventListener("submit", (event) => {
     event.preventDefault();
-    addNewWork(form);
+    addNewWork();
   });
 
   return form;
@@ -360,8 +360,36 @@ function deleteWork(work, divPhoto) {
   }
 }
 
-function addNewWork(form) {
-  console.log("Ajout d'un nouveau projet réalisé avec succès !");
+/* On rajoute l'async + await pour pouvoir attendre la réponse de l'API et etre sur que le nouveau projet est bien créé */
+async function addNewWork() {
+  const headers = new Headers();
+  /* D'apres la doc du FormData dont le lien est fourni dans le cours 
+  (https://developer.mozilla.org/fr/docs/Web/API/FormData/Using_FormData_Objects), on ne doit pas mettre de Content-Type lors d'un POST */
+  // headers.append("Content-Type", "multipart/form-data")
+  // On doit ajouter le token dans le header comme précisé dans l'API http://localhost:5678/api-docs/#/default/post_works
+  // On le recupere dans le localStorage
+  headers.append("Authorization", `Bearer ${window.localStorage.getItem("token")}`);
+
+  const formData = new FormData()
+
+  // On ajoute la photo à la FormData
+  formData.append("image", document.getElementById("file").files[0]); // file[0] car l'input de type file recupere potentiellement une liste de files (on ne veut que le 1er)
+  // On ajoute le titre à la FormData
+  formData.append("title", document.getElementById("title").value);
+  // On ajoute la catégorie a la FormData
+  formData.append("category", document.getElementById("category").value);
+
+  const response = await fetch("http://localhost:5678/api/works", {
+      method: "POST",
+      headers: headers,
+      body: formData,
+  });
+  if (response.ok) {
+      const newWork = await response.json();
+      window.alert(`Le projet ${newWork.title} a bien été ajouté`)  ;
+  } else {
+      window.alert("Erreur détectée lors de l'envoi du formulaire. Veuillez réessayer");
+  }
 }
 
 function createEditablePhoto(gallery, work) {
