@@ -22,6 +22,7 @@ function generateGallery(works) {
   for (let i = 0; i < works.length; i++) {
     const work = works[i];
     const figure = document.createElement("figure");
+    figure.id = "work-" + work.id
 
     const imgFigure = document.createElement("img");
     imgFigure.src = work.imageUrl;
@@ -179,8 +180,6 @@ async function generatePortfolioEditButton(works, categories) {
     openModal(works, categories);
   });
 }
-
-
 
 async function main() {
   // API constants
@@ -346,7 +345,6 @@ function generateAddWorkForm(categories) {
   form.id = "modal-add-work";
 
   const divInputs = document.createElement("div");
-  divInputs.className = "modal-add-inputs";
 
   // File upload
   const divFileBox = document.createElement("div");
@@ -551,6 +549,10 @@ function deleteWork(work, divPhoto) {
         divPhoto.removeEventListener("click", deleteWork);
         // Remove all children
         divPhoto.remove();
+
+        const workGallery = document.getElementById("work-" + work.id)
+        workGallery.remove();
+
         window.alert(`Le projet ${work.title} a bien été supprimé`);
       }
       else {
@@ -586,7 +588,7 @@ async function addNewWork() {
   });
   if (response.ok) {
       const newWork = await response.json();
-      window.alert(`Le projet ${newWork.title} a bien été ajouté`)  ;
+      window.alert(`Le projet ${newWork.title} a bien été ajouté`);
       const works = await getWorks();
       generateGallery(works);
       closeModal();
@@ -598,24 +600,21 @@ async function addNewWork() {
 function createEditablePhoto(gallery, work) {
   // Create the container for both the image and the bin
   const divPhoto = document.createElement("div");
-  divPhoto.className = "js-modal-photo";
+  divPhoto.className = "js-modal-deletable-photo";
 
   // Create the image
-  const divImage = document.createElement("div");
-  divImage.className = "js-modal-photo-img";
   const photo = document.createElement("img");
   photo.src = work.imageUrl;
-  divImage.appendChild(photo);
-  divPhoto.appendChild(divImage);
+  divPhoto.appendChild(photo);
 
   // Create the trash bin (delete button)
   const divButton = document.createElement("div");
-  divButton.className = "js-modal-photo-delete-btn";
+  divButton.className = "js-modal-deletable-photo-delete-div";
   const deleteButton = document.createElement("span");
   deleteButton.classList.add("fa-solid", "fa-trash-can");
   divButton.appendChild(deleteButton);
   divPhoto.appendChild(divButton);
-  divPhoto.addEventListener("click", () => {
+  divButton.addEventListener("click", () => {
     deleteWork(work, divPhoto);
   });
 

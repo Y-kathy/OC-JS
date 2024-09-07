@@ -47,6 +47,8 @@ table {
 	border-spacing: 0;
 }
 /** end reset css**/
+
+/* Code fourni par OpenClassRooms */
 body {
 	max-width: 1140px;
 	margin:auto;
@@ -54,28 +56,7 @@ body {
 	font-size: 14px;
 }
 
-.image-and-nav {
-	display: flex;
-	justify-content: space-between;
-	margin: 50px 0
-}
-
-header .banner {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-	font-size: 1.2em;
-	background-color: black;
-	color: white;
-	padding-block: 15px;
-}
-
-.fa-pen-to-square {
-	margin: 5px;
-}
-
-main section {
+section {
 	margin: 50px 0
 }
 
@@ -112,10 +93,6 @@ li, a {
 	font-size: 16px;
 	color: black;
 	text-decoration: none;
-}
-
-.head img {
-	width: 50%;
 }
 
 li:hover {
@@ -256,3 +233,270 @@ footer nav ul {
 	justify-content: flex-end;
 	margin: 2em
 }
+
+/* Fin des styles définis par OpenClassRooms */
+
+/******************************************************/
+/******************************************************/
+/******************************************************/
+
+/* Styles ajoutés */
+
+/* On reprend le style de la section utilisee */
+main {
+	margin: 50px 0
+}
+
+/* Barre de navigation et photo de Sophie */
+.image-and-nav {
+	display: flex;
+	justify-content: space-between;
+	margin: 50px 0
+}
+
+/**************************************/
+/* Mode EDITION (quand on est loggué) */
+/**************************************/
+/* Bannière noire */
+header .banner {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	font-size: 1.2em;
+	background-color: black;
+	color: white;
+	padding-block: 15px;
+}
+
+/* Icône "stylo" */
+.fa-pen-to-square {
+	margin: 5px;
+}
+
+/**********/
+/* Modale */
+/**********/
+/* La boite modale en elle-meme */
+.modal {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+	overflow: auto;
+}
+
+/* Le contenu de la boite modale */
+.modal-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 720px;
+    max-width: calc(100vw - 20px);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Classe créée pour regrouper les boutons de navigation de la modale (flèche arrière et croix) */
+.js-modal-div-header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+/* Le bouton "croix" de fermeture */
+.fa-xmark {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Le bouton flèche arrière */
+.fa-arrow-left {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Pour le survol de tous les boutons Font Awesome */
+.fa-solid:hover {
+    cursor: pointer;
+}
+
+/******************************************************************/
+/* Page principale de la modale = page de suppression des projets */
+/******************************************************************/
+/* Classe créée pour le titre de la modale ("Galerie photo") */
+.js-modal-title {
+    font-family: 'Work Sans';
+    color: black;
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+/* Classe regroupant l'ensemble des travaux */
+.js-modal-gallery {
+    width: 75%;
+    display: grid;
+    grid-template-columns: repeat(5, 17%);
+    gap: 20px;
+    border-bottom: 3px solid lightgray;
+    padding-bottom: 80px;
+}
+
+/* Classe regroupant les éléments img + poubelle */
+.js-modal-deletable-photo {
+    /* display: flex; */
+}
+
+/* Image du projet */
+.js-modal-deletable-photo img {
+	max-height:100%;
+	max-width:100%;
+    object-fit: contain;
+}
+
+/* Bouton poubelle = Icone FA "poubelle" + fond noir derrière */
+.js-modal-deletable-photo-delete-div {
+	width: 20px;
+    height: 20px;
+    background-color: black;
+    border-radius: 3px;
+    cursor: pointer;
+	align-content: center;
+	position: relative;
+	position: relative;
+	bottom: 82%;
+	left: 70%;
+}
+
+/* Icone poubelle */
+.fa-trash-can {
+    color: white;
+}
+
+/* Boutons "Ajouter une photo" (page de suppression) et "Valider" (page d'ajout) */
+.modal-wrapper input[type="submit"] {
+    height: 45px;
+    width: 50%;
+    border-style: none;
+    font-size: 16px;
+}
+
+/* Classe regroupant l'ensemble des données du formulaire */
+#modal-add-work {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Message d'alerte lors de la validation du formulaire */
+#modal-add-work alert {
+    color: red;
+    font-weight: bold;
+    padding-bottom: 32px;
+    border-bottom: 2px solid lightgray;
+}
+
+/* Classe regroupant les données des champs "Titre" et "Catégorie" du formulaire */
+.modal-add-title, .modal-add-category {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: space-around;
+    width: 100%;
+    text-align: left;
+    margin-block: 5px;
+}
+
+/* Champs Titre et Catégorie du formulaire */
+#title, #category {
+    border: none;
+    filter: drop-shadow(3px 3px 15px rgba(0, 0, 0, 0.1));
+    font-size: 25px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background-color: white;
+}
+
+/* Label et options des champs "Titre" et "Catégorie" du formulaire */
+.modal-add-title label, .modal-add-category label, option {
+    font-size: 16px;
+}
+
+/* Input[text] et select des champs "Titre" et "Catégorie" du formulaire */
+.modal-add-title input[type="text"], .modal-add-category select {
+    height: 65px;
+}
+
+/* Tout le container gérant l'ajout d'une image */
+.add-file-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 220px;
+    background-color: rgb(232, 241, 246);
+    margin-bottom: 40px;
+}
+
+/* Tout le container gérant l'ajout d'une image */
+#preview {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 60%;
+}
+
+/* Bouton "+ Ajouter photo */
+#uploadFileButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(48, 102, 133);
+    font-weight: bolder;
+    font-size: 16px;
+    width: 60%;
+    height: 40px;
+    border-radius: 30px;
+    background-color: rgb(203, 214, 220);
+    border-style: none;
+    cursor: pointer;
+    margin-block: 10px;
+}
+
+/* Icone Image Font Awesome */
+.fa-image {
+    font-size: 80px;
+    color: rgb(185, 197, 204);
+}
+
+/* Contraintes relatives à l'image */
+.add-image-requirements {
+    font-size: 14px;
+    color: rgb(68, 68, 68)
+}
+
+/* Bouton de soumission du formulaire */
+#add-work-submit {
+    background-color: rgb(167, 167, 167);
+    cursor: auto;
+}
+
+/* Image du formulaire */
+#preview img {
+	max-height:100%;
+	max-width:100%;
+    object-fit: contain;
+}
+
+/* Fin des styles ajoutés */
